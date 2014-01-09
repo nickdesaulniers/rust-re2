@@ -1,0 +1,7 @@
+*.dylib
+*.swp
+test/test
+deps/cre2
+deps/re2
+.DS_Store
+
