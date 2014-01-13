@@ -2,6 +2,26 @@
 
 Bindings for re2 for Rust
 
+#Installing dependencies
+Requires re2 and cre2.
+
+```
+cd deps && ./install_re2.sh && ./install_cre2.sh && cd ..
+```
+
+#Compiling
+```
+cd lib && make && cd ..
+```
+
+#Linking
+```
+rustc -L ../path/to/rust-re2/lib my_program.rs
+```
+
+It might be helpful to move the compiled lib to `/usr/local/lib` and link from
+there.  I should add a `make install` target.
+
 #Usage
 
 ```rust
@@ -16,8 +36,8 @@ matches[1]; // ~"world"
 matches[2]; // ~"42"
 ```
 
-The `u32` passed to `re2::Matches::new` represents the number of groupings. It
-won't segfault if you mess this number up.  Matches is always one more than the
+The `u32` passed to `re2::Matches::new` represents the number of groupings plus
+one. Matches is always one more than the
 number of groupings, as matches[0] is always the "full match".  The function
 also returns `0i32` in the case of no match, `1i32` in the case of a match,
 and `2i32` if the pattern is invalid.
